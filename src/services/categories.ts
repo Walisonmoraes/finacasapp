@@ -2,10 +2,11 @@ import { supabase, Tables } from '@/lib/supabase'
 
 export type Category = Tables['categories']
 
-export async function getCategories() {
+export async function getCategories(userId: string) {
   const { data, error } = await supabase
     .from('categories')
     .select('*')
+    .eq('user_id', userId)
     .order('name')
 
   if (error) {
