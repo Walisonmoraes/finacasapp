@@ -63,7 +63,7 @@ export function ExpensesByCategory() {
         try {
           const [transactionsResult, categoriesResult] = await Promise.all([
             getTransactionStats(user.id),
-            getCategories()
+            getCategories(user.id)
           ])
 
           const transactions = transactionsResult.data || []
