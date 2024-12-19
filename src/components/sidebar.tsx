@@ -15,6 +15,7 @@ import { Button } from "./ui/button"
 import { useState, useEffect } from "react"
 import { useMediaQuery } from "@/hooks/use-media-query"
 import { Separator } from "./ui/separator"
+import { Icons } from "./icons"
 
 const menuItems = [
   {
@@ -71,9 +72,9 @@ export function Sidebar() {
       <div className="flex w-full flex-col border-r bg-card px-2">
         <div className="flex h-14 items-center justify-between border-b px-2">
           {!isCollapsed && (
-            <div className="flex items-center gap-2">
-              <Receipt className="h-6 w-6 text-primary" />
-              <span className="text-lg font-semibold">Finanças Gest</span>
+            <div className="flex items-center gap-3">
+              <Icons.wallet className="h-8 w-8 text-primary" />
+              <span className="text-xl font-bold">Finanças Gest</span>
             </div>
           )}
           <Button
