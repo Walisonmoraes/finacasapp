@@ -92,10 +92,7 @@ export function TransactionsTable() {
     if (user) {
       try {
         setLoading(true)
-        const { data } = await getTransactions(user.id)
-        if (data) {
-          setTransactions(data)
-        }
+        await updateTransactionsList(user.id)
       } catch (error) {
         console.error(error)
         toast({
