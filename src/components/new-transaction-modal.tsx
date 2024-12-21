@@ -82,7 +82,7 @@ export function NewTransactionModal() {
     async function loadCategories() {
       if (user) {
         try {
-          const { data } = await getCategories()
+          const { data } = await getCategories(user.id)
           setCategories(data || [])
         } catch (error) {
           console.error("Erro ao carregar categorias:", error)
