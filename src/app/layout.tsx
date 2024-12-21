@@ -9,7 +9,7 @@ import { TransactionsProvider } from "@/contexts/transactions-context"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Finanças Gest",
+  title: "M Finanças",
   description: "Gerencie suas finanças pessoais",
   icons: {
     icon: [

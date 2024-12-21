@@ -40,6 +40,7 @@ export interface Database {
           type: 'income' | 'expense'
           notes?: string
           user_id: string
+          is_recurring: boolean
         }
         Insert: {
           id?: string
@@ -51,6 +52,7 @@ export interface Database {
           notes?: string | null
           category_id?: string | null
           user_id: string
+          is_recurring?: boolean
         }
         Update: {
           id?: string
@@ -62,6 +64,7 @@ export interface Database {
           notes?: string | null
           category_id?: string | null
           user_id?: string
+          is_recurring?: boolean
         }
       }
       categories: {
