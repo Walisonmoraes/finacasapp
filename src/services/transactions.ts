@@ -3,6 +3,7 @@ import { Category } from "./categories"
 
 export type Transaction = Tables<'transactions'> & {
   categories: Category | null
+  is_recurring: boolean
 }
 
 export type TransactionInput = {
