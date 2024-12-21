@@ -39,7 +39,7 @@ export async function getTransactions(userId: string) {
     .order('date', { ascending: false })
 
   if (error) throw error
-  return data
+  return { data: data || [] }
 }
 
 export async function getRecentTransactions(userId: string, limit = 5) {
