@@ -17,7 +17,7 @@ export async function getCategories(userId: string) {
   return { data: data || [] }
 }
 
-export async function createCategory(category: Pick<Category, 'name' | 'type' | 'icon'>, userId: string) {
+export async function createCategory(category: Pick<Category, 'name' | 'type' | 'color' | 'description'>, userId: string) {
   const { data, error } = await supabase
     .from('categories')
     .insert([{ ...category, user_id: userId }])
