@@ -1,17 +1,8 @@
 import { supabase, Tables } from '@/lib/supabase'
 import { Category } from "./categories"
 
-export type Transaction = {
-  id: string
-  user_id: string
-  description: string
-  amount: number
-  type: 'income' | 'expense'
-  category_id: string
+export type Transaction = Tables<'transactions'> & {
   categories: Category | null
-  is_recurring: boolean
-  date: string
-  created_at: string
 }
 
 export type TransactionInput = {

@@ -1,6 +1,6 @@
 import { supabase, Tables } from '@/lib/supabase'
 
-export type Category = Tables['categories']
+export type Category = Tables<'categories'>
 
 export async function getCategories(userId: string) {
   const { data, error } = await supabase
