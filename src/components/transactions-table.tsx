@@ -26,7 +26,7 @@ import {
 import { useToast } from "./ui/use-toast"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { useTransactions } from "@/contexts/transactions-context"
-import { deleteTransaction } from "@/services/transactions"
+import { deleteTransaction, getTransactions } from "@/services/transactions"
 
 export function TransactionsTable() {
   const [loading, setLoading] = useState(false)
@@ -92,12 +92,7 @@ export function TransactionsTable() {
     if (user) {
       try {
         setLoading(true)
-        const { data } = await supabase
-          .from("transactions")
-          .select("*")
-          .eq("user_id", user.id)
-          .order("date", { ascending: false })
-
+        const { data } = await getTransactions(user.id)
         if (data) {
           setTransactions(data)
         }
