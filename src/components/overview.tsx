@@ -97,31 +97,35 @@ export function Overview() {
         />
         <Tooltip
           content={({ active, payload }) => {
-            if (active && payload && payload.length) {
-              return (
-                <div className="rounded-lg border bg-background p-2 shadow-sm">
-                  <div className="grid grid-cols-2 gap-2">
-                    <div className="flex flex-col">
-                      <span className="text-[0.70rem] uppercase text-muted-foreground">
-                        Receitas
-                      </span>
-                      <span className="font-bold text-green-500">
-                        R$ {payload[0].value.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-                      </span>
-                    </div>
-                    <div className="flex flex-col">
-                      <span className="text-[0.70rem] uppercase text-muted-foreground">
-                        Despesas
-                      </span>
-                      <span className="font-bold text-red-500">
-                        R$ {payload[1].value.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-                      </span>
-                    </div>
+            if (!active || !payload || payload.length < 2) return null
+            
+            const revenue = payload[0]?.value
+            const expenses = payload[1]?.value
+            
+            if (revenue == null || expenses == null) return null
+
+            return (
+              <div className="rounded-lg border bg-background p-2 shadow-sm">
+                <div className="grid grid-cols-2 gap-2">
+                  <div className="flex flex-col">
+                    <span className="text-[0.70rem] uppercase text-muted-foreground">
+                      Receitas
+                    </span>
+                    <span className="font-bold text-green-500">
+                      R$ {revenue.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    </span>
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-[0.70rem] uppercase text-muted-foreground">
+                      Despesas
+                    </span>
+                    <span className="font-bold text-red-500">
+                      R$ {expenses.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                    </span>
                   </div>
                 </div>
-              )
-            }
-            return null
+              </div>
+            )
           }}
         />
       </LineChart>
